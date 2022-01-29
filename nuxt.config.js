@@ -53,7 +53,8 @@ export default {
   components: {
     dirs: [
       '@/components',
-      '@/components/layouts'
+      '@/components/layouts',
+      '@/components/swiper'
     ]
   },
 
@@ -75,6 +76,14 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: '/nuxt/'
+    publicPath: '/nuxt/',
+    loaders: {
+      sass: {
+        implementation: require('sass')
+      },
+      scss: {
+        implementation: require('sass')
+      }
+    }
   }
 }

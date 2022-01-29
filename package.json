@@ -16,7 +16,9 @@
     "@capacitor/core": "^3.4.0",
     "@nuxt/content": "^1.15.1",
     "core-js": "^3.19.3",
+    "interact.js": "^1.2.8",
     "nuxt": "^2.15.8",
+    "swiper": "^7.4.1",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
@@ -29,6 +31,8 @@
     "@nuxtjs/tailwindcss": "^4.2.1",
     "eslint": "^8.4.1",
     "eslint-plugin-nuxt": "^3.1.0",
-    "eslint-plugin-vue": "^8.2.0"
+    "eslint-plugin-vue": "^8.2.0",
+    "sass": "^1.49.0",
+    "sass-loader": "^10.2.1"
   }
 }
