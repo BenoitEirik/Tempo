@@ -28,7 +28,10 @@ export default {
 .cards {
   position: relative;
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin: 50px;
-  width: 300px;
+  width: 500px;
+  max-width: 100%;
 }
 </style>

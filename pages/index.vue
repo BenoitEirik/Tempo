@@ -1,6 +1,6 @@
 <template>
   <main class="flex-auto">
-    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto h-full py-6 sm:px-6 lg:px-8 flex justify-center">
       <GameCardsStack
         :cards="visibleCards"
         @cardAccepted="handleCardAccepted"
@@ -16,7 +16,7 @@
 export default {
   data () {
     return {
-      visibleCards: ['Test', 'Vue.js', 'Webpack']
+      visibleCards: ['Test', 'Vue.js', 'Webpack', 'Test']
     }
   },
   methods: {
