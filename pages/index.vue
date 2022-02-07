@@ -2,7 +2,8 @@
   <main class="flex-auto">
     <div class="max-w-7xl mx-auto h-full py-6 sm:px-6 lg:px-8 flex justify-center">
       <GameCardsStack
-        :cards="visibleCards"
+        :cards="articles"
+        v-if="!emptyCardStack"
         @cardAccepted="handleCardAccepted"
         @cardRejected="handleCardRejected"
         @cardSkipped="handleCardSkipped"
@@ -16,8 +17,14 @@
 export default {
   data () {
     return {
-      visibleCards: ['Test', 'Vue.js', 'Webpack', 'Test']
+      articles: Array,
+      emptyCardStack: true
     }
+  },
+  async fetch () {
+    this.articles = await this.$content('/articles').fetch()
+    console.log(this.articles)
+    this.emptyCardStack = false
   },
   methods: {
     handleCardAccepted () {
@@ -30,7 +37,7 @@ export default {
       console.log('handleCardSkipped')
     },
     removeCardFromDeck () {
-      this.visibleCards.shift()
+      this.articles.shift()
     }
   }
 }

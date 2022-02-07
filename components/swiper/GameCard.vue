@@ -9,11 +9,22 @@
     class="card"
     :style="{ transform: transformString }"
   >
-    <h3 class="cardTitle">
-      {{ card }}
-    </h3>
-    <div>
-      What is Lorem Ipsum?
+    <div class="mb-4 h-24 flex justify-center items-center">
+      <h3 class="text-3xl underline text-ellipsis">
+        {{ card.title }}
+      </h3>
+    </div>
+    <div class="mb-4 flex flex-wrap justify-start">
+      <span
+        v-for="hashtag in card.hashtags"
+        :key="hashtag"
+        class="m-2 px-3 py-1 rounded-full border border-white-300 text-white-500 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-300 active:opacity-50 transition duration-300 ease"
+      >
+        #{{ hashtag }}
+      </span>
+    </div>
+    <div class="flex-auto">
+      {{ card.description }}
     </div>
   </div>
 </template>
@@ -34,7 +45,7 @@ export default {
   },
   props: {
     card: {
-      type: String,
+      type: Object,
       required: true
     },
     isCurrent: {
@@ -181,7 +192,6 @@ $cardsPositionOffset: 55vh * 0.06;
 $cardsScaleOffset: 0.08;
 $defaultTranslation: $cardsPositionOffset * $cardsTotal;
 $defaultScale: 1 - ($cardsScaleOffset * $cardsTotal);
-$fs-card-title: 1.125em;
 
 .card {
   @include card();
@@ -197,9 +207,10 @@ $fs-card-title: 1.125em;
     background: rgba($c-black, 0.3);
   }
 
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   max-height: 100%;
   margin: auto;
@@ -218,8 +229,8 @@ $fs-card-title: 1.125em;
   user-select: none;
   pointer-events: none;
   will-change: transform, opacity;
-
   height: 100vw;
+  overflow: hidden;
 
   &.isCurrent {
     pointer-events: auto;
@@ -228,11 +239,6 @@ $fs-card-title: 1.125em;
   &.isAnimating {
     transition: transform 0.7s $ease-out-back;
   }
-}
-
-.cardTitle {
-  margin: 0 0 15px;
-  font-size: $fs-card-title;
 }
 
 @for $i from 1 through $cardsTotal {
